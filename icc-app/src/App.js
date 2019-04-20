@@ -14,11 +14,65 @@ class App extends Component {
           </Col>
         </Navbar>
 
-        <Container className="bg-success">
+        <Container>
           
-          
+          <Form>
+
+            <FormGroup>
+              <Label for="avaliacao1">Seu aproveitamento da aula</Label>
+              <Input type="select" name="select" id="avaliacao1">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Input>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="avaliacao2">Explicação do conteúdo</Label>
+              <Input type="select" name="select" id="avaliacao2">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Input>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="avaliacao3">Material da aula</Label>
+              <Input type="select" name="select" id="avaliacao3">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Input>
+            </FormGroup>
+
+            <FormGroup>
+              <Label for="avaliacao4">Avaliação geral da aula</Label>
+              <Input type="select" name="select" id="avaliacao4">
+                <option>1</option>
+                <option>2</option>
+                <option>3</option>
+                <option>4</option>
+                <option>5</option>
+              </Input>
+            </FormGroup>
+            
+            <FormGroup>
+              <Label for="textoAluno">Dica(s) para melhorar a aula</Label>
+              <Input type="textarea" name="text" id="textoAluno" />
+            </FormGroup>
+            
+            <Button color="primary">Enviar</Button>
+            
+          </Form>
 
         </Container>
+        
       </div>
     );
   }
