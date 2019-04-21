@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import './App.css';
-import { Nav, Navbar, Container, Row, Col, Button, Form, FormGroup, Label, Input, FormText } from 'reactstrap';
+import { Navbar, Container, Row, Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
 
 class App extends Component {
   render() {
