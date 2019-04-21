@@ -41,3 +41,11 @@
   height: 500px;
   resize: none;
 }
+
+.esquerda {
+  text-align: left;
+}
+
+.direita {
+  text-align: right;
+}
