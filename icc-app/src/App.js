@@ -114,7 +114,7 @@ class App extends Component {
                     </Col>
 
                     <Col className="mt-2 col-12">
-                      <Input type="textarea" name="text" id="textoAluno" />
+                      <Input rows="5" type="textarea" name="text" id="textoAluno" />
                     </Col>
                   </Row>
                 </FormGroup>
