@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import '../App.css';
-import { Navbar, Label } from 'reactstrap';
+import { Navbar } from 'reactstrap';
+import Titulo from './Title';
+import Matricula from './Matricula';
 
 
 class Topo extends Component {
@@ -26,30 +28,5 @@ class Topo extends Component {
   }
 }
 
-class Titulo extends Component {
-  render() {
-    return (
-
-      <div className="col-lg-6 col-md-6 col-sm-12">
-        <Label className="text-light">
-          Formulário de Avaliação de Aula
-        </Label>
-      </div>
-
-    );
-  }
-}
-
-class Matricula extends Component {
-  render() {
-    return (
-
-      <div className="col-lg-3 offset-lg-3 col-md-3 offset-md-2 col-sm-12">
-        <input className="form-inline" placeholder="Sua Matrícula"></input>
-      </div>
-
-    );
-  }
-}
 
 export default Topo;
