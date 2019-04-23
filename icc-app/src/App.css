@@ -49,3 +49,7 @@
 .direita {
   text-align: right;
 }
+
+.colorLight {
+  color: rgb(255, 255, 255);
+}
