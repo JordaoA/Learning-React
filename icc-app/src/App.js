@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import Topo from './componentes/head';
 import Corpo from './componentes/Corpo';
-import Text from './componentes/InputSelectText';
 import './App.css';
 
 class App extends Component {

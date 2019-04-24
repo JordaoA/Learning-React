@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import InputSelectText from './InputSelectText';
-import InputSelect from './InputSelect';
 import CorpoInput from './CorpoInput';
+import CorpoInputTextArea from './CorpoInputTextArea';
 
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import { Container, Row, Col, Button, Form} from 'reactstrap';
 
 class Corpo extends Component {
     render() {
@@ -12,25 +11,20 @@ class Corpo extends Component {
           <Container className="borda" expand="md">
             <Form>
               <Row>
+
                 <Col className="form-group my-3">
                   <CorpoInput text="Seu aproveitamento da aula" value={this.props.value}></CorpoInput>
                   <CorpoInput text="Explicação do conteúdo" value={this.props.value}></CorpoInput>
                   <CorpoInput text="Material da aula" value={this.props.value}></CorpoInput>
                   <CorpoInput text="Avaliação geral da aula" value={this.props.value}></CorpoInput>
                 </Col>
-                <Col className="col-lg-6 col-sm-12">
-                  <FormGroup className="my-3">
-                    <Row>
-                      <Col className="mt-2 esquerda">
-                        <Label for="textoAluno">Dica(s) para melhorar a aula</Label>
-                      </Col>
-                      <Col className="mt-2 col-12">
-                        <Input rows="5" type="textarea" name="text" id="textoAluno" />
-                      </Col>
-                    </Row>
-                  </FormGroup>
+
+                <Col className="col-lg-6 col-sm-12 my-3">
+                  <CorpoInputTextArea text="Dica(s) para melhorar a aula"></CorpoInputTextArea>
                 </Col>
+
               </Row>
+              
               <Button className="direita my-2" color="primary">Enviar</Button>  
             </Form>
           </Container>
