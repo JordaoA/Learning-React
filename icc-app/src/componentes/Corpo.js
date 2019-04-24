@@ -24,7 +24,6 @@ class Corpo extends Component {
                 </Col>
 
               </Row>
-              
               <Button className="direita my-2" color="primary">Enviar</Button>  
             </Form>
           </Container>
