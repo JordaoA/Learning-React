@@ -48,7 +48,7 @@ class Corpo extends Component {
         <Container className="borda" expand="md">
           <Form>
             <Row>
-              <alert>{this.state.values}</alert>
+              
               <Col className="form-group my-3">
                 {renderCorpo([
                   {
