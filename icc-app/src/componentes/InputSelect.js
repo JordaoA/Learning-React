@@ -12,7 +12,9 @@ class InputSelect extends React.Component {
     }
 
     handleChange(e) {
-        this.setState({values: e.target.value});
+        e.preventDefault();
+        this.state.values = e.target.value;
+        this.props.myFunction(e.target.value);
     }
 
     render() {

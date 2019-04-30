@@ -7,6 +7,7 @@ import Estatistica from './Estatistica';
 import {Link} from 'react-router-dom'
 
 import { Container, Row, Col, Form } from 'reactstrap';
+import { mapToCssModules } from 'reactstrap/lib/utils';
 //const para testar o gráfico. para testar colocar um onClick={a} na tag Link
 const a = () => {
   ReactDOM.render(<Estatistica 
@@ -31,8 +32,14 @@ class Corpo extends Component {
     this.state = {
       values: [-1, -1, -1, -1]
     }
+
   }
 
+  setValues(e, id) {
+    let arr = this.state.values;
+    arr[id] = e;
+    this.setState({values: arr});
+  }
 
   
   render() {
@@ -41,12 +48,26 @@ class Corpo extends Component {
         <Container className="borda" expand="md">
           <Form>
             <Row>
-
+              <alert>{this.state.values}</alert>
               <Col className="form-group my-3">
-                <CorpoInput id="1" text="Seu aproveitamento da aula" value={this.state.values[0]}></CorpoInput>
-                <CorpoInput id="2" text="Explicação do conteúdo" value={this.state.values[1]}></CorpoInput>
-                <CorpoInput id="3" text="Material da aula" value={this.state.values[2]}></CorpoInput>
-                <CorpoInput id="4" text="Avaliação geral da aula" value={this.state.values[3]}></CorpoInput>
+                {renderCorpo([
+                  {
+                    id: 0,
+                    text: "Seu aproveitamento da aula"
+                  },
+                  {
+                    id: 1,
+                    text: "Explicação do conteúdo"
+                  },
+                  {
+                    id: 2,
+                    text: "Material da aula"
+                  },
+                  {
+                    id: 3,
+                    text: "Avaliação geral da aula"
+                  }
+                ], this.setValues.bind(this), this.state.values)}
               </Col>
 
               <Col className="col-lg-6 col-sm-12 my-3">
@@ -61,5 +82,13 @@ class Corpo extends Component {
     );
   }
 }
+
+const renderCorpo = (arrayObjs, myFunction, values) => {
+
+  return arrayObjs.map((obj) => (
+    <CorpoInput id={obj.id} myFunction={myFunction} text={obj.text} value={values[obj.id]}></CorpoInput>
+  ));
+}
+
 
 export default Corpo;

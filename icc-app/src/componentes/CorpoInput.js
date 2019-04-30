@@ -9,7 +9,7 @@ class CorpoInput extends React.Component {
             
             <div className="row my-2">
                 <InputSelectText text={this.props.text}></InputSelectText>
-                <InputSelect value={this.props.value}></InputSelect>
+                <InputSelect myFunction={(e) => this.props.myFunction(e, this.props.id)} value={this.props.value}></InputSelect>
             </div>
         );
     }
