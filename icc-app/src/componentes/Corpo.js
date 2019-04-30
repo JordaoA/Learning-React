@@ -1,100 +1,65 @@
-import React, { Component } from 'react'
+import React, { Component } from 'react';
+import ReactDOM from 'react-dom';
+import CorpoInput from './CorpoInput';
+import CorpoInputTextArea from './CorpoInputTextArea';
+import Estatistica from './Estatistica';
 
-import { Container, Row, Col, Button, Form, FormGroup, Label, Input} from 'reactstrap';
+import {Link} from 'react-router-dom'
+
+import { Container, Row, Col, Form } from 'reactstrap';
+//const para testar o gráfico. para testar colocar um onClick={a} na tag Link
+const a = () => {
+  ReactDOM.render(<Estatistica 
+    values={[13, 8, 3, 4, 5, 6]}
+    labels={["Seu aproveitamento da aula", "Explicação do conteúdo", "Material da aula", "Avaliação geral da aula"]}
+    label={"Avaliações Recebidas"}
+    colors={[
+      'rgba(255,99,132,0.6)',
+      'rgba(54,162,235,0.6)',
+      'rgba(255,206,86,0.6)',
+      'rgba(75,192,192,0.6)',
+      'rgba(153,102,255,0.6)',
+      'rgba(255,159,64,0.6)',
+      'rgba(255,99,132,0.6)'
+  ]}/>, document.getElementById('root'));
+}
 
 class Corpo extends Component {
-    render() {
-        return (
-        <div className="mt-5">
-          <Container className="borda" expand="md">
-            <Form>
-              <Row>
-                <Col>
-                <FormGroup>
-                  <Row>
-                    <Col className="mt-2 esquerda">
-                      <Label for="avaliacao1">Seu aproveitamento da aula</Label>
-                    </Col>
-                    <Col className="col-4 mt-2">
-                      <Input type="select" name="select" id="avaliacao1">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
-                    </Col>
-                  </Row>
-                </FormGroup>
-                <FormGroup>
-                  <Row>
-                    <Col className="mt-2 esquerda">
-                      <Label for="avaliacao2">Explicação do conteúdo</Label>
-                    </Col>
-                    <Col className="col-4 mt-2">
-                      <Input type="select" name="select" id="avaliacao2">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
-                    </Col>
-                  </Row>
-                </FormGroup>
-                <FormGroup>
-                  <Row>
-                    <Col className="mt-2 esquerda">
-                      <Label for="avaliacao3">Material da aula</Label>
-                    </Col>
+  constructor(props) {
+    super(props)
 
-                    <Col className="col-4 mt-2">
-                      <Input type="select" name="select" id="avaliacao3">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
-                    </Col>
-                  </Row>
-                </FormGroup>
-                <FormGroup>
-                  <Row>
-                    <Col className="mt-2 esquerda">
-                      <Label for="avaliacao4">Avaliação geral da aula</Label>
-                    </Col>
-                    <Col className="col-4 mt-2">
-                      <Input type="select" name="select" id="avaliacao4">
-                        <option>1</option>
-                        <option>2</option>
-                        <option>3</option>
-                        <option>4</option>
-                        <option>5</option>
-                      </Input>
-                    </Col>
-                  </Row>
-                </FormGroup>
-                </Col>
-                <Col className="col-lg-6 col-sm-12">
-                  <FormGroup>
-                    <Row>
-                      <Col className="mt-2 esquerda">
-                        <Label for="textoAluno">Dica(s) para melhorar a aula</Label>
-                      </Col>
-                      <Col className="mt-2 col-12">
-                        <Input rows="5" type="textarea" name="text" id="textoAluno" />
-                      </Col>
-                    </Row>
-                  </FormGroup>
-                </Col>
-              </Row>
-              <Button className="direita my-2" color="primary">Enviar</Button>  
-            </Form>
-          </Container>
-        </div>
-        );
+    this.state = {
+      values: [-1, -1, -1, -1]
     }
+  }
+
+
+  
+  render() {
+    return (
+      <div className="mt-5">
+        <Container className="borda" expand="md">
+          <Form>
+            <Row>
+
+              <Col className="form-group my-3">
+                <CorpoInput id="1" text="Seu aproveitamento da aula" value={this.state.values[0]}></CorpoInput>
+                <CorpoInput id="2" text="Explicação do conteúdo" value={this.state.values[1]}></CorpoInput>
+                <CorpoInput id="3" text="Material da aula" value={this.state.values[2]}></CorpoInput>
+                <CorpoInput id="4" text="Avaliação geral da aula" value={this.state.values[3]}></CorpoInput>
+              </Col>
+
+              <Col className="col-lg-6 col-sm-12 my-3">
+                <CorpoInputTextArea text="Dica(s) para melhorar a aula"></CorpoInputTextArea>
+              </Col>
+
+            </Row>
+            <Link className="btn btn-primary direita my-2" to={"/resultado"}>Enviar</Link>
+          </Form>
+        </Container>
+      </div>
+    );
+  }
 }
 
 export default Corpo;
