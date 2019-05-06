@@ -3,12 +3,12 @@ import ReactDOM from 'react-dom';
 import CorpoInput from './CorpoInput';
 import CorpoInputTextArea from './CorpoInputTextArea';
 import Estatistica from './Estatistica';
+import axios from 'axios';
 
 import {Link} from 'react-router-dom'
 
 import { Container, Row, Col, Form } from 'reactstrap';
-import { mapToCssModules } from 'reactstrap/lib/utils';
-//const para testar o gráfico. para testar colocar um onClick={a} na tag Link
+//const para testar o gráfico. para testar => colocar um onClick={a} na tag Link
 const a = () => {
   ReactDOM.render(<Estatistica 
     values={[13, 8, 3, 4, 5, 6]}
@@ -30,15 +30,19 @@ class Corpo extends Component {
     super(props)
 
     this.state = {
-      values: [-1, -1, -1, -1]
+      values: [1, 1, 1, 1]
     }
 
   }
 
   setValues(e, id) {
     let arr = this.state.values;
-    arr[id] = e;
+    arr[id] = parseInt(e);
     this.setState({values: arr});
+  }
+
+  print() {
+    console.log(this.state.values);
   }
 
   
@@ -48,8 +52,8 @@ class Corpo extends Component {
         <Container className="borda" expand="md">
           <Form>
             <Row>
-              
-              <Col className="form-group my-3">
+            
+              <Col onChange={this.print()} className="form-group my-3">
                 {renderCorpo([
                   {
                     id: 0,
@@ -75,13 +79,18 @@ class Corpo extends Component {
               </Col>
 
             </Row>
-            <Link className="btn btn-primary direita my-2" to={"/resultado"}>Enviar</Link>
+            <Link onClick={func(this.state.values)} className="btn btn-primary direita my-2" to={"/resultado"}>Enviar</Link>
           </Form>
         </Container>
       </div>
     );
   }
 }
+
+const func = (param) => {
+  axios.post("localhost:9000/salvaValores", param).then(res => console.log(res)).catch(err => console.log(err));
+}
+
 
 const renderCorpo = (arrayObjs, myFunction, values) => {
 

@@ -1,0 +1,16 @@
+{
+  "name": "backend",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "start": "node index.js"
+  },
+  "dependencies": {
+    "mongoose": "^5.5.5",
+    "express": "^4.16.4"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC"
+}
