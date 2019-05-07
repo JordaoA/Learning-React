@@ -5,12 +5,12 @@ import CorpoInputTextArea from './CorpoInputTextArea';
 import Estatistica from './Estatistica';
 import axios from 'axios';
 
-import {Link} from 'react-router-dom'
+import { Link } from 'react-router-dom'
 
 import { Container, Row, Col, Form } from 'reactstrap';
 //const para testar o gráfico. para testar => colocar um onClick={a} na tag Link
 const a = () => {
-  ReactDOM.render(<Estatistica 
+  ReactDOM.render(<Estatistica
     values={[13, 8, 3, 4, 5, 6]}
     labels={["Seu aproveitamento da aula", "Explicação do conteúdo", "Material da aula", "Avaliação geral da aula"]}
     label={"Avaliações Recebidas"}
@@ -22,7 +22,7 @@ const a = () => {
       'rgba(153,102,255,0.6)',
       'rgba(255,159,64,0.6)',
       'rgba(255,99,132,0.6)'
-  ]}/>, document.getElementById('root'));
+    ]} />, document.getElementById('root'));
 }
 
 class Corpo extends Component {
@@ -38,21 +38,30 @@ class Corpo extends Component {
   setValues(e, id) {
     let arr = this.state.values;
     arr[id] = parseInt(e);
-    this.setState({values: arr});
+    this.setState({ values: arr });
   }
 
   print() {
     console.log(this.state.values);
   }
 
-  
+  onSubmit = () => {
+    axios.post("https://localhost/salvaValores", this.state.values, {
+      headers: {
+        "Access-Control-Allow-Origin": "*"
+      }
+    })
+      .then(res => console.log(res))
+      .catch(err => console.log(err));
+  }
+
   render() {
     return (
       <div className="mt-5">
         <Container className="borda" expand="md">
           <Form>
             <Row>
-            
+
               <Col onChange={this.print()} className="form-group my-3">
                 {renderCorpo([
                   {
@@ -79,7 +88,7 @@ class Corpo extends Component {
               </Col>
 
             </Row>
-            <Link onClick={func(this.state.values)} className="btn btn-primary direita my-2" to={"/resultado"}>Enviar</Link>
+            <Link onClick={this.onSubmit} className="btn btn-primary direita my-2" to={"/resultado"}>Enviar</Link>
           </Form>
         </Container>
       </div>
@@ -87,15 +96,11 @@ class Corpo extends Component {
   }
 }
 
-const func = (param) => {
-  axios.post("localhost:9000/salvaValores", param).then(res => console.log(res)).catch(err => console.log(err));
-}
-
 
 const renderCorpo = (arrayObjs, myFunction, values) => {
 
   return arrayObjs.map((obj) => (
-    <CorpoInput id={obj.id} myFunction={myFunction} text={obj.text} value={values[obj.id]}></CorpoInput>
+    <CorpoInput key={obj.id} id={obj.id} myFunction={myFunction} text={obj.text} value={values[obj.id]}></CorpoInput>
   ));
 }
 
