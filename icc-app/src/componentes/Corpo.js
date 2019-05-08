@@ -8,6 +8,7 @@ import axios from 'axios';
 import { Link } from 'react-router-dom'
 
 import { Container, Row, Col, Form } from 'reactstrap';
+
 //const para testar o gráfico. para testar => colocar um onClick={a} na tag Link
 const a = () => {
   ReactDOM.render(<Estatistica
