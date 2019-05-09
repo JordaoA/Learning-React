@@ -7,7 +7,7 @@ const PORT = 9000;
 
 var d = new Date();
 
-app.use(function(req, res, next) {
+app.use(express.json(), function(req, res, next) {
     res.header("Allow", "OPTIONS, GET, POST");
     //res.setHeader("Access-Control-Allow-Methods", "GET, POST, OPTIONS");
     res.header("Access-Control-Allow-Origin", "*");
@@ -18,7 +18,16 @@ app.use(function(req, res, next) {
 
 
 app.post('/salvaValores', (req, res, next) => {
-    console.log(req.body);
+    //let a = (res.json(req.body.values));
+    //console.log(res.json(req.body));
+    res.json(req.body.values);
+    console.log(req.body.values);
+    new aulas({
+        avaliacoes: req.body.values,
+        data: d.getDay() + "-" + d.getMonth() + "-" + d.getFullYear()
+    }).save().then(() => console.log('aula salva'))
+    //console.log(a);
+    //res.send(req.body.values);
 });
 
 

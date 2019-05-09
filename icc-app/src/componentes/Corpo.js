@@ -47,22 +47,23 @@ class Corpo extends Component {
   }
 
   onSubmit = () => {
+    /*
     axios.post("http://localhost:9000/salvaValores", {data: "VAAAIIII SEEEEEEEEEEEEEEEEEE FUUUUUUUUUUUUUUUUUUUUUUUUUUUUDDDDDDDDDEEEEEEEEEEEERRR POORRAAAAAAAAAAAAAA"}, {
       headers: {
         "Access-Control-Allow-Origin": "*"
       }
     })
       .then(res => console.log(res))
-      .catch(err => console.log(err));
+      .catch(err => console.log(err)); */
 
-      /*axios({
+      axios({
         method: 'post',
         url: "http://localhost:9000/salvaValores",
         headers: {"Content-Type": "application/json"}, 
         data: {
-          foo: 'bar', // This is the body part
+          values: this.state.values // This is the body part
         }
-      });*/
+      });
   }
 
   render() {
