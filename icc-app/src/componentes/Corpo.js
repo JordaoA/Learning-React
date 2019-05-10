@@ -98,7 +98,7 @@ class Corpo extends Component {
             <Form>
               <Row>
 
-                <Col onChange={console.log(this.state.textArea)} className="form-group my-3">
+                <Col className="form-group my-3">
                   {renderCorpo([
                     {
                       id: 0,

@@ -3,9 +3,6 @@ import InputSelectText from './InputSelectText';
 import InputTextArea from './InputTextArea';
 
 class CorpoInputTextArea extends React.Component {
-    constructor(props) {
-        super(props);
-    }
     
     render() {
         return (

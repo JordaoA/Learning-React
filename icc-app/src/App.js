@@ -1,6 +1,5 @@
 import React, { Component } from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Topo from './componentes/head';
 import Corpo from './componentes/Corpo';
 import './App.css';
 import Estatistica from './componentes/Estatistica';

@@ -24,7 +24,6 @@ app.post('/salvaValores', (req, res) => {
 });
 
 
-
 app.listen(PORT, (req, res) => {
     console.log("SERVER ON");
 });

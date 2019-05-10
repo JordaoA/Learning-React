@@ -29,6 +29,7 @@ let updateAvaliacoes = (avaliacoes, matricula, textArea) => {
     })*/
 }
 
+
 module.exports = {
     updateAvaliacoes
 };
