@@ -3,12 +3,16 @@ import InputSelectText from './InputSelectText';
 import InputTextArea from './InputTextArea';
 
 class CorpoInputTextArea extends React.Component {
+    constructor(props) {
+        super(props);
+    }
+    
     render() {
         return (
             <div className="form-group">
                 <div className="row">
                     <InputSelectText text={this.props.text}></InputSelectText>
-                    <InputTextArea></InputTextArea>
+                    <InputTextArea myFunction={this.props.myFunction} ></InputTextArea>
                 </div>
             </div>
         );

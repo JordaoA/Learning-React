@@ -19,16 +19,12 @@ app.use(express.json(), function (req, res, next) {
 
 
 app.post('/salvaValores', (req, res) => {
-
     res.json(req.body.values);
-    console.log(req.body.values);
-    funcao.updateAvaliacoes(req.body.values);
-
+    funcao.updateAvaliacoes(req.body.values, req.body.matricula, req.body.textArea);
 });
 
 
 
 app.listen(PORT, (req, res) => {
-    //aulas.find({data: d.getDay() + "-" + d.getMonth() + "-" + d.getFullYear()}).then(res => console.log(res))
     console.log("SERVER ON");
 });

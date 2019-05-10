@@ -9,7 +9,6 @@ class App extends Component {
   render() {
     return (
       <div className="App">
-        <Topo />
         <Switch>
           <Route path={"/"} exact={true} component={Corpo}/>
           <Route path={"/resultado"} component={Estatistica}/>

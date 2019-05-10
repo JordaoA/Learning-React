@@ -1,14 +1,21 @@
 const mongo = require('./database');
 
 const AulaSchema = mongo.Schema({
+    matricula: {
+        type: String,
+        require: true,
+    },
     avaliacoes: {
         type: Array,
         require: true
     },
     data: {
-        type: Date,
+        type: String,
         require: true,
-        unique: true
+    },
+    textArea: {
+        type: String,
+        require: false
     }
 });
 
