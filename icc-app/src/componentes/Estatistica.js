@@ -12,7 +12,7 @@ class Estatistica extends Component {
           datasets: [
               {
                   label: "Avaliações Recebidas",
-                  data: [20,15,37,8,13],
+                  data: [],
                   backgroundColor: [
                     'rgba(255,99,132,0.6)',
                     'rgba(54,162,235,0.6)',
@@ -29,14 +29,16 @@ class Estatistica extends Component {
     }
 
     componentWillMount() {
-      //console.log(this.getDados());
       this.getDados();
     }
+
 
     async getDados() {
       //console.log("Pegou")
       axios.get("http://localhost:9000/pegaValores")
-      .then(res => console.log(res.data));
+      .then(res => {
+        this.state.chartData.datasets[0].data = res.data;
+      });
     }
 
   
