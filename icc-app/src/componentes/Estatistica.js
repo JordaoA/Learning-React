@@ -37,7 +37,9 @@ class Estatistica extends Component {
       //console.log("Pegou")
       axios.get("http://localhost:9000/pegaValores")
       .then(res => {
-        this.state.chartData.datasets[0].data = res.data;
+        let chartData = {...this.state.chartData}
+        chartData.datasets[0].data = res.data;
+        this.setState({chartData: chartData});
       });
     }
 
