@@ -11,25 +11,23 @@ let updateAvaliacoes = (avaliacoes, matricula, textArea) => {
     new aulas({ data: dataAtual, avaliacoes: avaliacoes, matricula: matricula, textArea: textArea }).save()
     .then(() => console.log("Avaliação de aula salva."))
     .catch(() => console.log("Ocorreu um erro!"));
+}
 
-    /*aulas.find({ data: dataAtual }).then((res) => {
-        let newArr = [];
-        for (let i = 0; i < 4; i++){
-            newArr[i] = avaliacoes[i] + res[0].avaliacoes[i];
+let recuperaDados = () => {
+    
+    aulas.find( {data : dataAtual} ).then(res => {
+        let a = [0, 0, 0, 0];
+        let arr = res.map((obj) => {return { notas: obj.avaliacoes }});
+        for (let i = 0; i < arr.length; i++) {
+            for (let j = 0; j < arr[i].notas.length; j++) {
+                a[j] += arr[i].notas[j];
+            }
         }
-        
-        aulas.updateOne({ data:d.getDay() + "-" + d.getMonth() + "-" + d.getFullYear() }, { avaliacoes: newArr }).then((res) => {
-            console.log('As avaliações da aula foram atualizadas.');
-        })
-
-    }).catch((err) => {
-        new aulas({ data: dataAtual, avaliacoes: avaliacoes, matricula: matricula }).save().then((res) => {
-            console.log('Nova avaliação de aula salva.');
-        })
-    })*/
+        return a;
+    })
 }
 
 
 module.exports = {
-    updateAvaliacoes
+    updateAvaliacoes, recuperaDados
 };
