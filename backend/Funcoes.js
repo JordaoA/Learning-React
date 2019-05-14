@@ -13,21 +13,7 @@ let updateAvaliacoes = (avaliacoes, matricula, textArea) => {
     .catch(() => console.log("Ocorreu um erro!"));
 }
 
-let recuperaDados = () => {
-    
-    aulas.find( {data : dataAtual} ).then(res => {
-        let a = [0, 0, 0, 0];
-        let arr = res.map((obj) => {return { notas: obj.avaliacoes }});
-        for (let i = 0; i < arr.length; i++) {
-            for (let j = 0; j < arr[i].notas.length; j++) {
-                a[j] += arr[i].notas[j];
-            }
-        }
-        return a;
-    })
-}
-
 
 module.exports = {
-    updateAvaliacoes, recuperaDados
+    updateAvaliacoes
 };

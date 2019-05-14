@@ -7,7 +7,6 @@ class Estatistica extends Component {
   constructor() {
     super();
     this.state = {
-      date: new Date(),
       chartData: {
         labels: ["Seu aproveitamento da aula", "Explicação do conteúdo", "Material da aula", "Avaliação geral da aula"],
         datasets: [
@@ -42,9 +41,6 @@ class Estatistica extends Component {
         this.setState({ chartData: chartData });
       });
   }
-
-  onChange = date => this.setState( {date} );
-
 
   render() {
     return (
