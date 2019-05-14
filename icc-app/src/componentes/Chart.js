@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Bar, Line, Pie } from 'react-chartjs-2';
+import { Bar, Line, Pie, HorizontalBar } from 'react-chartjs-2';
 
 class Chart extends Component {
 
@@ -18,12 +18,19 @@ class Chart extends Component {
         titleGraph: 'Estatística de avaliação de aula'
     }
 
+    Rerender = () => {
+        this.forceUpdate();
+    }
+
 
     render() {
         return(
-            <div className="chart">
+            <div {...this.Rerender} className="chart">
+            
                 
-                <Bar data={this.state.chartData}
+                <Pie data={this.state.chartData}
+                     //width={720}
+                     //height={300}
                      options={{/*maintainAspectRatio: false*/
                               title: {
                                   display: this.props.displayTitle,
@@ -34,7 +41,7 @@ class Chart extends Component {
                                   display: this.props.displayLegend,
                                   position: this.props.legendPosition
                               }}}>
-                </Bar>
+                </Pie>
 
             </div>
         );
