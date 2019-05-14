@@ -1,5 +1,5 @@
 import React, { Component } from 'react'; 
-import { Bar, Line, Pie, HorizontalBar } from 'react-chartjs-2';
+import { Bar, Line, Pie } from 'react-chartjs-2';
 
 class Chart extends Component {
 
@@ -26,11 +26,7 @@ class Chart extends Component {
     render() {
         return(
             <div {...this.Rerender} className="chart">
-            
-                
                 <Pie data={this.state.chartData}
-                     //width={720}
-                     //height={300}
                      options={{/*maintainAspectRatio: false*/
                               title: {
                                   display: this.props.displayTitle,
