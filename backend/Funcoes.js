@@ -6,9 +6,11 @@
 const aulas = require('./models/Aula.js');
 let d = new Date();
 let dataAtual = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
-let updateAvaliacoes = (avaliacoes, matricula, textArea) => {
-    
-    new aulas({ data: dataAtual, avaliacoes: avaliacoes, matricula: matricula, textArea: textArea }).save()
+let updateAvaliacoes = (avaliacoes, matricula, textArea, data) => {
+    data = data.substring(0, 10)
+    console.log(data)
+    //let dataA = (data.getDate() < 9 ? "0" + data.getDate() : data.getDate()) + "/" + (data.getMonth() < 9 ? "0"+ (data.getMonth() + 1) : (data.getMonth() + 1)) + "/" + data.getFullYear();
+    new aulas({ data: data, avaliacoes: avaliacoes, matricula: matricula, textArea: textArea }).save()
     .then(() => console.log("Avaliação de aula salva."))
     .catch(() => console.log("Ocorreu um erro!"));
 }

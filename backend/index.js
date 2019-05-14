@@ -22,7 +22,7 @@ app.use(express.json(), function (req, res, next) {
 app.post('/salvaValores', (req, res) => {
     res.json(req.body.values);
     console.log(req.body)
-    funcao.updateAvaliacoes(req.body.values, req.body.matricula, req.body.textArea);
+    funcao.updateAvaliacoes(req.body.values, req.body.matricula, req.body.textArea, req.body.date);
 });
 
 
