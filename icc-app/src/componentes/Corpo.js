@@ -6,6 +6,9 @@ import Estatistica from './Estatistica';
 import axios from 'axios';
 import Titulo from './Title';
 import Matricula from './Matricula';
+import DatePicker from "react-datepicker";
+
+import "react-datepicker/dist/react-datepicker.css";
 
 import { Link } from 'react-router-dom'
 
@@ -34,11 +37,21 @@ class Corpo extends Component {
 
     this.state = {
       values: [1, 1, 1, 1],
+      date: new Date(),
       matricula: "",
       textArea: ""
     }
     this.setMatricula = this.setMatricula.bind(this);
     this.setTextArea = this.setTextArea.bind(this);
+    this.handleChange = this.handleChange.bind(this);
+
+  }
+
+  handleChange(newDate) {
+    console.log('new date')
+    this.setState({
+      date: newDate
+    });
   }
 
   setMatricula(e) {
@@ -49,6 +62,10 @@ class Corpo extends Component {
     let arr = this.state.values;
     arr[id] = parseInt(e);
     this.setState({ values: arr });
+  }
+
+  setNewDate(Date){
+    this.setState({date:Date})
   }
 
   setTextArea(e) {
@@ -67,7 +84,8 @@ class Corpo extends Component {
       data: {
         values: this.state.values,
         matricula: this.state.matricula,
-        textArea: this.state.textArea
+        textArea: this.state.textArea,
+        date: this.state.date
       }
     });
   }
@@ -118,7 +136,12 @@ class Corpo extends Component {
                     }
                   ], this.setValues.bind(this), this.state.values)}
                 </Col>
-
+                <Col>
+                  <DatePicker
+                  selected={this.state.date}
+                  onChange={this.handleChange}
+                  />                
+                </Col>
                 <Col className="col-lg-6 col-sm-12 my-3">
                   <CorpoInputTextArea myFunction={this.setTextArea}  text="Dica(s) para melhorar a aula"></CorpoInputTextArea>
                 </Col>
