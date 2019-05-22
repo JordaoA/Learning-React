@@ -27,9 +27,11 @@ app.post('/salvaValores', (req, res) => {
 
 app.get('/pegaValores', (req, res1) => {
     console.log("Dados recuperados");
-    let d = new Date();
-    let dataAtual = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
-    aulas.find( {data : dataAtual} ).then(res => {
+    const t = req.query.data;
+    console.log(t);
+    //let d = new Date();
+    //let dataAtual = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
+    aulas.find( {data : t } ).then(res => {
         let a = [0, 0, 0, 0];
         let arr = res.map((obj) => {return { notas: obj.avaliacoes }});
         for (let i = 0; i < arr.length; i++) {

@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import Chart from './Chart';
 import axios from 'axios';
+import Calendar from "./Datepicker";
 
 class Estatistica extends Component {
 
@@ -24,17 +25,26 @@ class Estatistica extends Component {
             ]
           }
         ]
-      }
+      },
+      date: ((new Date().getDate() < 9 ? "0" + new Date().getDate() : new Date().getDate()) + "/" + (new Date().getMonth() < 9 ? "0"+ (new Date().getMonth() + 1) : (new Date().getMonth() + 1)) + "/" + new Date().getFullYear())
     }
+    this.handleChange = this.handleChange.bind(this);
+  }
+
+  handleChange(e) {
+    let d = e
+    d = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
+    this.state.date = d;
+    this.componentWillMount();
   }
 
   componentWillMount() {
     this.getDados();
   }
 
-
   getDados() {
-    axios.get("http://localhost:9000/pegaValores")
+    const dataAgora = {data: this.state.date};
+    axios.get("http://localhost:9000/pegaValores", {params: dataAgora})
       .then(res => {
         let chartData = { ...this.state.chartData }
         chartData.datasets[0].data = res.data;
@@ -45,6 +55,9 @@ class Estatistica extends Component {
   render() {
     return (
       <div className="App">
+        <Calendar
+          myFunction={this.handleChange}
+        ></Calendar>
         <Chart chartData={this.state.chartData} /*titleGraph="Estatística de avaliação de aula"*/ legendPosition="top"></Chart>
       </div>
     )

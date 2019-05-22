@@ -25,7 +25,7 @@ class Corpo extends Component {
   }
 
   setMatricula(e) {
-    this.setState({ matricula: e.target.value});
+    this.setState({ matricula: e.target.value });
   }
 
   setValues(e, id) {
