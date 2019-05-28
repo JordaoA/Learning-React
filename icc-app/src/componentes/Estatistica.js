@@ -35,12 +35,12 @@ class Estatistica extends Component {
     let d = e
     d = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
     this.state.date = d;
-    this.componentWillMount();
-  }
-
-  componentWillMount() {
+    //this.setState({ date: d })
+    //this.componentWillMount();
     this.getDados();
   }
+
+  
 
   getDados() {
     const dataAgora = {data: this.state.date};

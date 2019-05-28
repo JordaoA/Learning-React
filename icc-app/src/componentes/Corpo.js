@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
-import ReactDOM from 'react-dom';
 import CorpoInput from './CorpoInput';
 import CorpoInputTextArea from './CorpoInputTextArea';
-import Estatistica from './Estatistica';
 import axios from 'axios';
 import Titulo from './Title';
 import Matricula from './Matricula';
