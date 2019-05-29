@@ -36,7 +36,9 @@ class Estatistica extends Component {
     d = (d.getDate() < 9 ? "0" + d.getDate() : d.getDate()) + "/" + (d.getMonth() < 9 ? "0"+ (d.getMonth() + 1) : (d.getMonth() + 1)) + "/" + d.getFullYear();
     this.state.date = d;
     this.setState({ date: d });
-    //this.componentWillMount();
+  }
+
+  componentDidUpdate() {
     this.getDados();
   }
 
@@ -61,6 +63,5 @@ class Estatistica extends Component {
     )
   }
 }
-
 
 export default Estatistica;
